@@ -82,6 +82,7 @@
                 <div class="row no-gutters justify-content-between" style="padding-right: 0px !important; padding-left: 0px !important; margin-left: 0px !important; margin-right: 0px !important;">
                     <input type="text" id="series_inputbox" class="col-3 no-gutters" placeholder="Zine Series">
                     <input type="text" id="theme_inputbox" class="col-3 no-gutters" placeholder="Zine Theme">
+                    <input type="text" id="socials_inputbox" class="col-3 no-gutters" placeholder="Social Media Accounts (Make sure to specify platform)">
                     <input type="text" onfocus="(this.type='date')" id="date_inputbox" class="col-3 no-gutters" placeholder="End Date">
                 </div>
             </div>
@@ -140,6 +141,7 @@
             zine_series = document.getElementById("series_inputbox").value;
             zine_theme = document.getElementById("theme_inputbox").value;
             zine_date = document.getElementById("date_inputbox").value;
+            zine_socials = document.getElementById("socials_inputbox").value;
             creator_name = user.displayName;
             uid = user.uid;
 
@@ -231,6 +233,7 @@
                 theme: zine_theme,
                 date: zine_date,
                 creator: creator_name,
+                socials: zine_socials,
                 userID: uid,
 
                 links: zine_interest_link + zine_mod_link + zine_artist_link + zine_writer_link + zine_merch_link + zine_preorders_link + zine_leftovers_link + zine_freedownload_link,

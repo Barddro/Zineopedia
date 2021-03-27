@@ -199,21 +199,28 @@
 
 #series_inputbox {
     height: 50px;
-    width: 371px !important;
+    width: 278px !important;
     font-size: 30px;
     font-family: "warung_kopi";
 }
 
 #theme_inputbox {
     height: 50px;
-    width: 371px !important;
+    width: 278px !important;
+    font-size: 30px;
+    font-family: "warung_kopi";
+}
+
+#socials_inputbox {
+    height: 50px;
+    width: 278px !important;
     font-size: 30px;
     font-family: "warung_kopi";
 }
 
 #date_inputbox {
     height: 50px;
-    width: 371px !important;
+    width: 278px !important;
     font-size: 30px;
     font-family: "warung_kopi";
 }
