@@ -87,6 +87,8 @@
             <input type="text" id="creator_searchbox" placeholder="Search by Creator">
         </div>
 
+        <div style="padding:30px"></div>
+
         <div id="zine_table"></div>
 
         </div>
@@ -174,8 +176,8 @@
                 {title:"Theme", field:"theme"},
                 {title:"End Date", field:"date"},
                 {title:"Creator", field:"creator"},
-                {title: "Social Media", field:"socials"},
-                {title:"Links", field:"links", minWidth:1000},
+                {title: "Social Media", field:"socials", maxWidth:400, formatter:"textarea"},
+                {title:"Links", field:"links", maxWidth: 400, formatter:"textarea"},
             ]
         });
 
