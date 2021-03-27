@@ -1,2 +1,2 @@
 # Zineopedia
-An all-in-1 zin tracker!
+An all-in-1 zine tracker!
