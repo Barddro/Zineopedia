@@ -48,7 +48,9 @@
     <div class="container" style="padding-top: 40px; padding-left: 100px; padding-right: 100px;">
         <h1 id="header_text">My Zines</h1>
         <div id="zine_table"></div>
+        <div style="padding:10px"></div>
         <button onclick="delete_zine()" id="delete_button" style="float:right">Delete Selected Zines</button>
+        <div style="padding:30px"></div>
         <h1 id="header_text">Edit Profile</h1>
         <span id="header_text">Username: </span>
         <input id="username_input" placeholder="Username">
@@ -137,6 +139,7 @@
                 {title:"Series", field:"series"},
                 {title:"Theme", field:"theme"},
                 {title:"End Date", field:"date"},
+                {title: "NSFW?", field:"nsfw"},
                 {title:"Creator", field:"creator"},
                 {title: "Social Media", field:"socials", maxWidth:400, formatter:"textarea"},
                 {title:"Links", field:"links", maxWidth:400, formatter:"textarea"},
@@ -200,13 +203,6 @@
             console.log(zine_data);
             var keys = Object.keys(zine_data);
             var user = firebase.auth().currentUser;
-
-            console.log(selectedData)
-
-            if(selectedData == "") {
-                alert("Please select a zine to delete.")
-                return;
-            }
 
             for(i=0; i<keys.length; i++) {
                 for(j=0; j<selectedData.length; j++) {

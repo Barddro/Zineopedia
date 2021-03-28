@@ -43,6 +43,11 @@
         </div>
     </nav>
 
+    <div class="alert alert-success alert-dismissible fade show" role="alert"id="success_alert" style="display: none;">
+        <h1 style="font-family: warung_kopi; font-size: 20px;"><strong>Success! </strong> Your zine has been posted! Go to the home page to view it.</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" onclick="close_alert()"></button>
+    </div>
+
         <div class="container" style="padding-top: 40px; padding-left: 100px; padding-right: 100px;">
             <div class="row">
 
@@ -84,6 +89,15 @@
                     <input type="text" id="theme_inputbox" class="col-3 no-gutters" placeholder="Zine Theme">
                     <input type="text" id="socials_inputbox" class="col-3 no-gutters" placeholder="Social Media Accounts (Make sure to specify platform)">
                     <input type="text" onfocus="(this.type='date')" id="date_inputbox" class="col-3 no-gutters" placeholder="End Date">
+                </div>
+                <div class="row no-gutters justify-content-start">
+                    <div class="col-1">
+                        <span id="header_text">NSFW: </span>
+                    </div>
+                    <div class="col-1">
+                        <input type="checkbox" class="align-bottom" style="height: 64px; width: auto; border: 10px solid red;" id="nsfw_checkbox">
+                    </div>
+                    <div class="col-10"></div>
                 </div>
             </div>
 
@@ -144,6 +158,14 @@
             zine_socials = document.getElementById("socials_inputbox").value;
             creator_name = user.displayName;
             uid = user.uid;
+            zine_nsfw = "";
+
+            if(document.getElementById("nsfw_checkbox").checked) {
+                zine_nsfw = "yes";
+            } else {
+                zine_nsfw = "no";
+            }
+
 
             zine_interest_link = document.getElementById("interest").value;
             zine_mod_link = document.getElementById("mod-apps").value;
@@ -235,6 +257,7 @@
                 creator: creator_name,
                 socials: zine_socials,
                 userID: uid,
+                nsfw: zine_nsfw,
 
                 links: zine_interest_link + zine_mod_link + zine_artist_link + zine_writer_link + zine_merch_link + zine_preorders_link + zine_leftovers_link + zine_freedownload_link,
                 //couldn't use (better) structure below due to tabulator unable to display mutiple fields and trouble wiht nested data
@@ -250,6 +273,9 @@
             // "PUSH" means we add something to the database
             console.log(data);
             ref.push(data);
+
+            document.getElementById("success_alert").style.display = "flex";
+            
         } // end setdata
 
         $(document).ready(function(){
@@ -265,6 +291,12 @@
                 });
             }).change();
         });
+
+        function close_alert() {
+            $(document).ready(function() {
+                $("#success_alert").hide();
+            })
+        }
 
     </script>
 

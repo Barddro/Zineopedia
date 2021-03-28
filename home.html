@@ -168,13 +168,14 @@
             data:tabledata,
             minHeight:"100%",
             virtualDomHoz:true,
-            layout:"fitColumn",
+            layout:"fitData",
             columns:[
                 {title:"Name", field:"name"},
                 {title:"Phase", field:"phase"},
                 {title:"Series", field:"series"},
                 {title:"Theme", field:"theme"},
                 {title:"End Date", field:"date"},
+                {title: "NSFW?", field:"nsfw"},
                 {title:"Creator", field:"creator"},
                 {title: "Social Media", field:"socials", maxWidth:400, formatter:"textarea"},
                 {title:"Links", field:"links", maxWidth: 400, formatter:"textarea"},
@@ -209,6 +210,14 @@
             console.log(tabledata)
 
             table.setData(tabledata);
+
+            /*for(i=0; i<keys.length; i++) {
+                console.log(row.getElement(i))
+                if(zine_data[k].zine_nsfw == "on") {
+                    var rowElement = row.getElement(i);
+                    rowElement.style.rowTextColor = "red";
+                }
+            }*/
         }
 
         function zine_search() {
@@ -248,7 +257,7 @@
                 console.log(name_input)
                 console.log(zine_phase)
 
-                if(zine_name.toLowerCase().includes(name_input.toLowerCase()) && zine_phase.includes(phase_input) && zine_series.toLowerCase().includes(series_input.toLowerCase()) && zine_theme.toLowerCase().includes(theme_input.toLowerCase())) {
+                if(zine_name.toLowerCase().includes(name_input.toLowerCase()) && zine_phase.includes(phase_input) && zine_series.toLowerCase().includes(series_input.toLowerCase()) && zine_theme.toLowerCase().includes(theme_input.toLowerCase()) && zine_creator.toLowerCase().includes(creator_input.toLowerCase())) {
                     tabledata.push(zine_data[k]);
                     console.log(tabledata);
                 }
