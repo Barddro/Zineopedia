@@ -281,8 +281,7 @@
 
 #delete_button {
     height: 60px; 
-    width: 150px;
-    font-size: 40px;
+    font-size: 30px;
     font-family: "warung_kopi";
     background-color: rgb(233, 233, 233);
     border-radius: 20px;
@@ -291,8 +290,7 @@
 
 #delete_button:hover {
     height: 60px; 
-    width: 150px;
-    font-size: 40px;
+    font-size: 30px;
     font-family: "warung_kopi";
     color: white;
     background-color: #d8342a;
