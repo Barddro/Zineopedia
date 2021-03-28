@@ -204,7 +204,8 @@
                 var k = keys[i]
 
                 //tabledata=[zine_data[k]];
-                tabledata.push(zine_data[k])
+                tabledata.push(zine_data[k]);
+                tabledata.reverse();
             }
             
             console.log(tabledata)
@@ -263,6 +264,7 @@
                 }
             }
 
+            tabledata.reverse();
             table.setData(tabledata);
         }
 
