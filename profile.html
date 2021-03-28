@@ -54,6 +54,7 @@
         <button onclick="update_profile()" id="search_button" style="float: right;">Update</button>
         <br>
         <div style="padding: 40px;"></div>
+        <button onclick="delete_zine()">Delete Selected Zines</button>
         <button onclick="signout()" id="search_button" style="float:right;">Log Out</button>
     
     </div>
@@ -129,6 +130,8 @@
             virtualDomHoz:true,
             layout:"fitColumn",
             columns:[
+                {formatter:"rowSelection", titleFormatter:"rowSelection", hozAlign:"center", headerSort:false, cellClick:function(e, cell){cell.getRow().toggleSelect();
+                }},
                 {title:"Name", field:"name"},
                 {title:"Phase", field:"phase"},
                 {title:"Series", field:"series"},
@@ -170,6 +173,60 @@
             console.log(zine_data[k].userID);
             console.log(user.uid);
             table.setData(tabledata);
+        }
+
+        function errData(err) {
+            console.log('Error!')
+            console.log(err)
+        }
+
+        function delete_zine() {
+            var database = firebase.database();
+            var submit_confirmation = confirm("Are you sure you want to delete selected zines?");
+
+            if (submit_confirmation == false) {
+                return;
+            }
+            var ref = database.ref('zines');
+            ref.on('value', delete_zine2, errData) 
+
+        }
+
+        function delete_zine2(data) {
+            var database = firebase.database();
+            var ref = database.ref('zines');
+            var selectedData = table.getSelectedData();
+            var zine_data = data.val();
+            console.log(zine_data);
+            var keys = Object.keys(zine_data);
+            var user = firebase.auth().currentUser;
+
+            console.log(selectedData)
+
+            if(selectedData == "") {
+                alert("Please select a zine to delete.")
+                return;
+            }
+
+            for(i=0; i<keys.length; i++) {
+                for(j=0; j<selectedData.length; j++) {
+
+                    var k = keys[i];
+                    console.log(k)
+
+                    if(zine_data[k].name == selectedData[j].name && zine_data[k].phase == selectedData[j].phase && zine_data[k].series == selectedData[j].series && zine_data[k].theme == selectedData[j].theme && zine_data[k].creator == selectedData[j].creator && zine_data[k].date == selectedData[j].date && zine_data[k].socials == selectedData[j].socials && zine_data[k].links == selectedData[j].links) {
+                        var database = firebase.database();
+                        var ref = database.ref('zines/'+ k);
+                        ref.remove();
+                    }
+                    
+                    console.log(selectedData)
+                }
+            }
+
+            tabledata=[]
+
+            initial_state();
         }
 
         function errData(err) {
