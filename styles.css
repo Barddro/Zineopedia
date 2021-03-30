@@ -298,6 +298,19 @@
     border: none;
 }
 
+.tabulator .tabulator-header .tabulator-col {
+    background-color: none !important;
+    color: white;
+}
+
+.tabulator .tabulator-row-odd {
+    background: blue;
+}
+
+.tabulator .tabulator-row-even {
+    background: none;
+}
+
 .tabulator {
     width: auto;
     height:auto !important;
