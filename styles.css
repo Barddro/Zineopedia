@@ -299,16 +299,24 @@
 }
 
 .tabulator .tabulator-header .tabulator-col {
-    background-color: none !important;
+    background-color: #4d99c2;
     color: white;
 }
 
 .tabulator .tabulator-row-odd {
-    background: blue;
+    background: #f6af9c !important;
+}
+
+.tabulator .tabulator-row-even:hover {
+    background: #9ce8a0 !important;
 }
 
 .tabulator .tabulator-row-even {
     background: none;
+}
+
+.tabulator .tabulator-row-odd:hover {
+    background: #d2785f !important;
 }
 
 .tabulator {
@@ -317,12 +325,6 @@
     font-family: "warung_kopi";
     font-size: 18px !important;
 }
-
-.tabulator-header {
-    background-color: #f2795a !important;
-}
-
-
 
 .box{
     color:"black";
