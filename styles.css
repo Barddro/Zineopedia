@@ -299,24 +299,48 @@
 }
 
 .tabulator .tabulator-header .tabulator-col {
-    background-color: #4d99c2;
+    background-color: #4ad4de;
+    border-color: 1px solid #2f99bf;
+    border-right: 1px solid #2f99bf;
     color: white;
 }
 
+.tabulator-row .tabulator-cell {
+    border-color: 1px solid #2f99bf;
+    border-right: 1px solid #2f99bf;
+}
+
+.tabulator .tabulator-header .tabulator-col.tabulator-sortable:hover{
+    background-color: #2f99bf !important;
+    color: white;
+}
+
+.tabulator-arrow {
+    color: white;
+}
+
+.tabulator .tabulator-header {
+    border-bottom: 1px solid #2f99bf;;
+}
+
+.tabulator .tabulator-header .tabulator-col.tabulator-sortable[aria-sort=none] .tabulator-col-content .tabulator-col-sorter .tabulator-arrow {
+    border-bottom: 6px solid #ffffff;
+}
+
 .tabulator .tabulator-row-odd {
-    background: #f6af9c !important;
+    background: #c5f4f7 !important;
 }
 
 .tabulator .tabulator-row-even:hover {
-    background: #9ce8a0 !important;
+    background: #fce76f !important;
 }
 
 .tabulator .tabulator-row-even {
-    background: none;
+    background:  #fefebb;
 }
 
 .tabulator .tabulator-row-odd:hover {
-    background: #d2785f !important;
+    background: #8dd6f5 !important;
 }
 
 .tabulator {
@@ -324,6 +348,7 @@
     height:auto !important;
     font-family: "warung_kopi";
     font-size: 18px !important;
+    border: 1px solid #2f99bf;
 }
 
 .box{
