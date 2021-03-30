@@ -128,9 +128,9 @@
 
         var table = new Tabulator("#zine_table", {
             data:tabledata,
-            minHeight:"100%",
-            virtualDomHoz:true,
-            layout:"fitColumn",
+            maxHeight: 1000,
+            virtualDom: true,
+            autoResize: true,
             columns:[
                 {formatter:"rowSelection", titleFormatter:"rowSelection", hozAlign:"center", headerSort:false, cellClick:function(e, cell){cell.getRow().toggleSelect();
                 }},

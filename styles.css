@@ -300,6 +300,7 @@
 
 .tabulator {
     width: auto;
+    height:auto !important;
     font-family: "warung_kopi";
     font-size: 18px !important;
 }
@@ -307,6 +308,8 @@
 .tabulator-header {
     background-color: #f2795a !important;
 }
+
+
 
 .box{
     color:"black";

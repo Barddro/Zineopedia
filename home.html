@@ -166,8 +166,9 @@
 
         var table = new Tabulator("#zine_table", {
             data:tabledata,
-            minHeight:"100%",
-            virtualDomHoz:true,
+            maxHeight: 1000,
+            virtualDom: true,
+            autoResize: true,
             layout:"fitData",
             columns:[
                 {title:"Name", field:"name"},
