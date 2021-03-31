@@ -38,7 +38,7 @@
                 <li class="nav-item px-3">
                     <a class="nav-link" id="nav_other" style="font-size: 40px;" href="post.html">Post</a>
                 </li>
-                <li class="nav-item px-3">
+                <li class="nav-item px-3" id="profile_link">
                     <a class="nav-link" id="nav_other" style="font-size: 40px;" href="profile.html">Profile</a>
                 </li>
             </ul>
@@ -123,7 +123,8 @@
         {
             if (user == null) 
             {
-                window.location.href = "index.html";
+                //window.location.href = "index.html";
+                document.getElementById("profile_link").style.display = "none";
             } 
         }); // end check auth state
 

@@ -36,7 +36,7 @@
                 <li class="nav-item px-3">
                     <a class="nav-link" id="nav_current" style="font-size: 40px;" href="post.html">Post</a>
                 </li>
-                <li class="nav-item px-3">
+                <li class="nav-item px-3" id="profile_link">
                     <a class="nav-link" id="nav_other" style="font-size: 40px;" href="profile.html">Profile</a>
                 </li>
             </ul>
@@ -131,9 +131,10 @@
         // Authentication Check: to see if you are logged in
         firebase.auth().onAuthStateChanged(function(user) 
         {
-            if (user == null) 
+            if (firebase.auth().currentUser == null) 
             {
-                window.location.href = "index.html";
+                //window.location.href = "index.html";
+                document.getElementById("profile_link").style.display = "none";
             } 
         }); // end check auth state
 
@@ -156,8 +157,15 @@
             zine_theme = document.getElementById("theme_inputbox").value;
             zine_date = document.getElementById("date_inputbox").value;
             zine_socials = document.getElementById("socials_inputbox").value;
-            creator_name = user.displayName;
-            uid = user.uid;
+            creator_name = "";
+            if(firebase.auth().currentUser == null) {
+                uid = "guest"
+                creator_name = "Guest User"
+            } else {
+                uid = user.uid;
+                creator_name = user.displayName;
+            }
+            
             zine_nsfw = "";
 
             if(document.getElementById("nsfw_checkbox").checked) {
@@ -240,10 +248,18 @@
                 zine_mod_link = "";
             }
 
-            var submit_confirmation = confirm("Are you sure you want to submit?");
+            if(firebase.auth().currentUser == null) {
+                var submit_confirmation = confirm("Are you sure you want to submit? (as a guest user, you cannot delete zines that you have posted)");
 
-            if (submit_confirmation == false) {
-                return;
+                if (submit_confirmation == false) {
+                    return;
+                }
+            } else {
+                var submit_confirmation = confirm("Are you sure you want to submit?");
+
+                if (submit_confirmation == false) {
+                    return;
+                }
             }
             
             // Create a JSON object to add to the database with user-inputted data

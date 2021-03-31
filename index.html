@@ -36,7 +36,13 @@
 
         <div style="text-align: center;">
 
-            <button onclick = "signin()" id="signin_button">Sign In With Google</button>
+            <button onclick = "signin()" id="signin_button">Sign In with Google</button>
+
+            <div style="padding: 10px"></div>
+
+            <p id="sub_text"><strong>OR</strong></p>
+
+            <button onclick = "guest_continue()" id="signin_button">Continue as a Guest User</button>
 
         </div>
 
@@ -90,6 +96,10 @@
             window.location.href = "home.html";
         });
     } // end signin 
+
+    function guest_continue() {
+        window.location.href = "home.html";
+    }
     </script>
 
 </body>
