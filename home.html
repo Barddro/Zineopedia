@@ -89,7 +89,11 @@
 
         <div style="padding:30px"></div>
 
-        <div id="zine_table"></div>
+        <!-- <button onclick="add_to_profile()">Add to Profile</button> -->
+
+        <div style="padding:30px"></div>
+
+        <div id="zine_table" class="home_table"></div>
 
         </div>
     
@@ -171,7 +175,21 @@
             virtualDom: true,
             autoResize: true,
             layout:"fitData",
+            rowFormatter:function(row){
+                var data = row.getData(); //get data object for row
+
+                data_date = data.date;
+                console.log(data_date);
+                console.log(new Date(data.date).getTime()/1000)
+                console.log(Date.now())
+
+                if(new Date(data.date).getTime()/1000 < Date.now()/1000){
+                    row.getElement().style.backgroundColor = "#c3c6c9"; //apply css change to row element
+                    row.getElement().style.backgroundColor.hover = "#a4abba";
+                }
+            },
             columns:[
+                {formatter:"rowSelection", titleFormatter:"rowSelection", hozAlign:"center", headerSort:false, cellClick:function(e, cell){cell.getRow().toggleSelect();}},
                 {title:"Name", field:"name"},
                 {title:"Phase", field:"phase"},
                 {title:"Series", field:"series"},
@@ -216,6 +234,8 @@
             console.log(tabledata)
 
             table.setData(tabledata);
+
+            //var row_date = table.searchRows(new Date("date").getTime()/1000, <, )
 
             /*for(i=0; i<keys.length; i++) {
                 console.log(row.getElement(i))
@@ -271,6 +291,48 @@
 
             tabledata.reverse();
             table.setData(tabledata);
+        }
+
+        function add_to_profile() {
+            var database = firebase.database();
+            var ref = database.ref('zines');
+            ref.on('value', add_to_profile2, errData) 
+        }
+        
+        function add_to_profile2(data) {
+            var selectedData = table.getSelectedData();
+            var database = firebase.database();
+            var ref = database.ref('zines');
+            var zine_data = data.val();
+            console.log(zine_data);
+            var keys = Object.keys(zine_data);
+            var user = firebase.auth().currentUser;
+            
+            var database = firebase.database();
+
+
+            for(i=0; i<keys.length; i++) {
+                for(j=0; j<selectedData.length; j++) {
+
+                    var database = firebase.database();
+                    var ref = database.ref('zines');
+                    var k = keys[i]
+                    var uid = user.uid;
+
+                    if(selectedData[j].name == zine_data[k].name) {
+                        ref = database.ref('added_zines/'+uid)
+                        ref.child(k).set(selectedData[j]);
+                        /*var database = firebase.database();
+                        var ref = database.ref('added_zines/'+user.uid);
+            
+                        for(l=0; l<ref.length; l++) {
+                            var added_number=l;
+                            var ref = database.ref('added_zines');
+                            ref.child(user.uid).set({[l]:k});
+                        }*/
+                    }
+                }
+            }
         }
 
         function errData(err) {

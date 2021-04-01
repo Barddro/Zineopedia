@@ -328,11 +328,11 @@
 }
 
 .tabulator .tabulator-row-odd {
-    background: #c5f4f7 !important;
+    background: #c5f4f7;
 }
 
 .tabulator .tabulator-row-even:hover {
-    background: #fce76f !important;
+    background: #fce76f;
 }
 
 .tabulator .tabulator-row-even {
@@ -340,7 +340,7 @@
 }
 
 .tabulator .tabulator-row-odd:hover {
-    background: #8dd6f5 !important;
+    background: #8dd6f5;
 }
 
 .tabulator {
