@@ -133,6 +133,19 @@
             maxHeight: 1000,
             virtualDom: true,
             autoResize: true,
+            rowFormatter:function(row){
+                var data = row.getData(); //get data object for row
+
+                data_date = data.date;
+                console.log(data_date);
+                console.log(new Date(data.date).getTime()/1000)
+                console.log(Date.now())
+
+                if(new Date(data.date).getTime()/1000 < Date.now()/1000){
+                    row.getElement().style.backgroundColor = "#c3c6c9"; //apply css change to row element
+                    row.getElement().style.backgroundColor.hover = "#a4abba";
+                }
+            },
             columns:[
                 {formatter:"rowSelection", titleFormatter:"rowSelection", hozAlign:"center", headerSort:false, cellClick:function(e, cell){cell.getRow().toggleSelect();}},
                 {title:"Name", field:"name"},
