@@ -227,23 +227,10 @@
                 tabledata.push(zine_data[k]);
             }
 
-            console.log(tabledata);
-
             tabledata.reverse();
-            
-            console.log(tabledata)
-
             table.setData(tabledata);
-
-            //var row_date = table.searchRows(new Date("date").getTime()/1000, <, )
-
-            /*for(i=0; i<keys.length; i++) {
-                console.log(row.getElement(i))
-                if(zine_data[k].zine_nsfw == "on") {
-                    var rowElement = row.getElement(i);
-                    rowElement.style.rowTextColor = "red";
-                }
-            }*/
+            //I have no idea why but adding the second one gets rid of this weird extra spacing in the rows.
+            table.setData(tabledata);
         }
 
         function zine_search() {
