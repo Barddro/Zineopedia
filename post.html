@@ -241,13 +241,10 @@
                 zine_freedownload_link = "";
             }
 
-            if(zine_name == "" || zine_phase == "" || zine_date == "" && zine_phase != free-download) {
+            if(zine_name == "" || zine_phase == "") {
                 alert("Please make sure that you have filled in the Zine Name and End Date fields, and that you have selected a Phase")
                 return;
-            } else {
-                zine_mod_link = "";
             }
-
             if(firebase.auth().currentUser == null) {
                 var submit_confirmation = confirm("Are you sure you want to submit? (as a guest user, you cannot delete zines that you have posted)");
 
