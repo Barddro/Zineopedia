@@ -241,7 +241,7 @@
                 zine_freedownload_link = "";
             }
 
-            if(zine_name == "" || zine_phase == "" || zine_date == "") {
+            if(zine_name == "" || zine_phase == "" || zine_date == "" && zine_phase != free-download) {
                 alert("Please make sure that you have filled in the Zine Name and End Date fields, and that you have selected a Phase")
                 return;
             } else {
