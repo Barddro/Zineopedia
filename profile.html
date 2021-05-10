@@ -273,6 +273,8 @@
             table.setData(addeddata);
         }
 
+        */
+        
         function delete_zine() {
             var database = firebase.database();
             var submit_confirmation = confirm("Are you sure you want to delete selected zines?");
@@ -284,7 +286,6 @@
             ref.on('value', delete_zine2, errData) 
 
         }
-        */
 
         function delete_zine2(data) {
             var database = firebase.database();
